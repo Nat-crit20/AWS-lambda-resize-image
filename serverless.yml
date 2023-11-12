@@ -1,0 +1,15 @@
+service: serverless-lambda-demo
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-central-1
+
+functions:
+  resizeAndUploadImage:
+    handler: ./index.resizeAndUploadImage
+    events:
+      - s3:
+          bucket: myawsbucket-24
+          event: s3:ObjectCreated:*
